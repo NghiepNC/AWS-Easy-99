@@ -76,7 +76,38 @@ Do những hạn chế kể trên, Lambda Không phù hợp cho những usecase
 - Dùng làm backend API khi kết hợp với API Gateway
 - Thực hiện các tác vụ đơn giản theo lịch kết hợp với EventBridge
 - Xử lý async khi nhận trigger từ S3
-![test2](13_lambda/serverless-lambda/Images_readme/image-1.png)
 - Xử lý async khi nhận trigger từ DynamoDB
 - Sử dụng trong bài toán ETL khi kết hợp với Kinesis, IoT
 ![test1](serverless-lambda/Images_readme/image.png)
+
+
+## LAB
+### Lab 1 – Xử lý file được upload lên S3 tự động
+Steps:
+1. Tạo một Lambda Layer sử dụng zip file được cung cấp. *Vì tác vụ xử lý ảnh đòi hỏi phải có một thư viện thêm vào.
+2. Tạo một lambda python theo mẫu, add layer đã tạo ở step1.
+3. Cấu hình IAM Role cho lambda, add thêm policy S3FullAccess.
+4. Setting trigger từ S3 cho thư mục /images. (Một lưu ý nhỏ là Lambda và S3 phải cùng Region)
+5. Thử upload một file định dạng .jpg
+6. Kiểm tra log của lambda.
+7. Kiểm tra xem các file resized có được tạo ra và lưu vào thư mục tương ứng.
+
+
+*Trong bài Lab 1 có sử dụng lambda layer từ Github repository sau:
+https://github.com/keithrozario/Klayers
+Các bạn có thể tham khảo (lưu ý license)
+
+
+### Lab 2 – Bật tắt EC2 instance theo lịch
+Yêu cầu: Tạo 1 lambda có chức năng bật tắt EC2 instance theo lịch. Lambda nhận 2 tham số là “instance_id” và “action” (START, STOP). Tiến hành setting schedule cho lambda sử dụng EventBridge. Khi triger lambda, EventBridge sẽ truyền sang 2 tham số cần thiết.
+![Sơ đồ minh hoạ ](serverless-lambda/Images_readme/image-1.png)
+
+Steps:
+- Tạo một EC2 instance Linux.
+- Tạo một Lambda Function (python) với code mẫu.
+- Cấp quyền EC2StartInstance/ EC2StopInstance cho Lambda.
+- Setting một EventBridge event với lịch gần với thời gian hiện tại, trong event truyền tham số **{action: STOP, instance_id: <instance id muốn stop>}**
+- Đợi đến thời gian đã set, xem lambda có được trigger, EC2 có được stop
+- Thực hiện tương tự cho hành động start instance.
+**{action: START, instance_id: <instance id muốn start>}**
+AWS Cloud for beginner
