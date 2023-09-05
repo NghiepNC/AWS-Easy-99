@@ -78,11 +78,14 @@ Do những hạn chế kể trên, Lambda Không phù hợp cho những usecase
 - Xử lý async khi nhận trigger từ S3
 - Xử lý async khi nhận trigger từ DynamoDB
 - Sử dụng trong bài toán ETL khi kết hợp với Kinesis, IoT
-![test1](serverless-lambda/Images_readme/image.png)
+
 
 
 ## LAB
 ### Lab 1 – Xử lý file được upload lên S3 tự động
+Yêu cầu: Tạo 1 lambda có chức năng xử lý hình (.jpg, .png) được upload lên S3 thành các size khác nhau, output được lưu vào thư mục tương ứng.
+Sơ đồ hệ thống:
+![Sơ đồ minh hoạ ](serverless-lambda/Images_readme/image-lab1.png)
 Steps:
 1. Tạo một Lambda Layer sử dụng zip file được cung cấp. *Vì tác vụ xử lý ảnh đòi hỏi phải có một thư viện thêm vào.
 2. Tạo một lambda python theo mẫu, add layer đã tạo ở step1.
@@ -100,7 +103,7 @@ Các bạn có thể tham khảo (lưu ý license)
 
 ### Lab 2 – Bật tắt EC2 instance theo lịch
 Yêu cầu: Tạo 1 lambda có chức năng bật tắt EC2 instance theo lịch. Lambda nhận 2 tham số là “instance_id” và “action” (START, STOP). Tiến hành setting schedule cho lambda sử dụng EventBridge. Khi triger lambda, EventBridge sẽ truyền sang 2 tham số cần thiết.
-![Sơ đồ minh hoạ ](serverless-lambda/Images_readme/image-1.png)
+![Sơ đồ minh hoạ ](serverless-lambda/Images_readme/image-lab2.png)
 
 Steps:
 - Tạo một EC2 instance Linux.
@@ -111,3 +114,26 @@ Steps:
 - Thực hiện tương tự cho hành động start instance.
 **{action: START, instance_id: <instance id muốn start>}**
 AWS Cloud for beginner
+
+### Lab3: Xử lý data CSV lưu vào DynamoDB
+Yêu cầu: Tạo 1 lambda có chức năng nhận notification từ S3 khi có một file csv được upload. Lambda đọc file csv và lưu vào DynamoDB table tương ứng.
+![Sơ đồ minh hoạ ](serverless-lambda/Images_readme/image-lab3.png)
+Steps:
+1. Tạo table employee trong DynamoDB như sample.
+2. Tạo một file csv theo sample.
+3. Tạo lambda sử dụng code mẫu
+4. Config lại Memory và timeout (vd 512 MB, 2min)
+5. Cấu hình Lambda, cấp S3FullAccess & DynamoDBFullAccess permission
+6. Cấu hình trigger từ S3 sang Lambda
+7. Test upload một file csv lên S3.
+8. Xem Log của Lambda function.
+9. Xem kết quả data lưu vào DynamoDB Table.
+
+### Lab: Clear resources
+Login to AWS console, thực hiện nội dung sau:
+1. *Lambda là một resource có zero idle cost nên các bạn hoàn toàn có thể giữ lại phục vụ tham khảo.
+2. Các file nặng có thể xoá khỏi S3 để tiết kiệm chi phí.
+3. Xóa toàn bộ DynamoDB Table.
+4. Terminate EC2 instance.
+5. Xoá snapshot còn sót lại.
+6. Xoá Elastic Ip (nếu có).
