@@ -76,7 +76,7 @@ Do những hạn chế kể trên, Lambda Không phù hợp cho những usecase
 - Dùng làm backend API khi kết hợp với API Gateway
 - Thực hiện các tác vụ đơn giản theo lịch kết hợp với EventBridge
 - Xử lý async khi nhận trigger từ S3
-![test2](Images_readme/image-1.png)
+![test2](serverless-lambda/Images_readme/image-1.png)
 - Xử lý async khi nhận trigger từ DynamoDB
 - Sử dụng trong bài toán ETL khi kết hợp với Kinesis, IoT
-![test1](image.png)
+![test1](serverless-lambda/Images_readme/image.png)
