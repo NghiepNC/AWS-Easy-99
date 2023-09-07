@@ -18,3 +18,13 @@ response time...
 - Zero idle cost
 - Easy to setup
 - Dễ dàng kết hợp với các dịch vụ khác như CloudWatch, WAF cho mục đích monitor & security.
+
+## Hệ sinh thái API Gateway
+API Gateway là một service chủ yếu có nhiệm vụ nhận request của client sau đó forward tới các service phía sau.
+
+## Khi nào nên sử dụng API Gateway?
+API Gateway phù hợp cho những bài toán sau
+- Kiến trúc Micro-service sử dụng lambda làm backend
+- Backend API cho hầu hết các use case (web API, IoT)
+- Gateway nhận data trực tiếp từ client sau đó lưu vào DynamoDB (DB First) 
+- Web Socket cho những hệ thống realtime communication.
