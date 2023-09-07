@@ -13,7 +13,7 @@ Viêt tắt của Virtual Private Cloud
 - Elastic IP: IP được cấp phát riêng, có thể access từ internet (public), không bị thu hồi khi instance start -> stop.
 Router
 Elastic IP address
-![Alt text](image.png)
+![Alt text](Images/image.png)
 - Security Group: Đóng vai trò như một firewall ở cấp độ instance, định nghĩa traffic được đi vào /đi ra. *Đã học ở bài EC2.
 - Network Access Controll List (ACL): được apply ở cấp độ subnet, tương tự như security group nhưng có rule Deny và các rule được đánh độ ưu tiên. Mặc định khi tạo VPC sẽ có 1 ACL được apply cho toàn bộ subnet trong VPC (mở all traffic không chặn gì cả).
 ![Alt text](Images/image.png)
@@ -29,3 +29,4 @@ các VPCs, VPN Connection, Direct Connect.
 
 
 -----
+### khó quá để hôm khác back lại
