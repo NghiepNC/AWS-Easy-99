@@ -68,3 +68,10 @@ Tính năng cơ bản của Cognito
 ## Lab 4- Combine Cognito with API Gateway
 Sơ đồ hệ thống
 ![Alt text](images/image.png)
+
+
+### Clear resources
+Trên AWS console, thực hiện các steps sau:
+1. Lambda có Idle cost = 0, có thể xoá hoặc giữ lại để tham khảo.
+2. API Gateway có Idle cost = 0, có thể xoá hoặc giữ lại để tham khảo.
+3. Cognito User pool: Có thể giữ lại tham khảo do vẫn nằm trong free tier.
