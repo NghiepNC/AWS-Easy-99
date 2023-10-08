@@ -75,3 +75,14 @@ Trên AWS console, thực hiện các steps sau:
 1. Lambda có Idle cost = 0, có thể xoá hoặc giữ lại để tham khảo.
 2. API Gateway có Idle cost = 0, có thể xoá hoặc giữ lại để tham khảo.
 3. Cognito User pool: Có thể giữ lại tham khảo do vẫn nằm trong free tier.
+
+
+-------
+## P/s
+API Gateway sẽ tạo tất tần tật về API,
+- dể dàng liên kết với các service khác làm backend
+- tạo link test khả năng API , 
+- tạo method để hỗ trợ gọi test 
+
+Cognito
+- Dịch vụ xác thực định danh(lấy token xác thực đển cho phép định danh xác thực API được gọi,.. và còn nhiều khả năng khác )
