@@ -30,3 +30,9 @@ các VPCs, VPN Connection, Direct Connect.
 
 -----
 ### khó quá để hôm khác back lại
+
+Xem lần 2 có vẻ dể hơn rồi, nhưng cũng chưa xem hết.
+
+Hiểu được tôgnr quan về VPC để không chế traffic của 1 hệ thống.
+
+Cái này đúng là quan trọng thật
